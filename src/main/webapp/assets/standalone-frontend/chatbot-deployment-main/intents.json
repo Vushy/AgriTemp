@@ -1,0 +1,177 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "How are you",
+        "Is anyone there?",
+        "Hello",
+        "Good day"
+      ],
+      "responses": [
+        "Hey there! Welcome to Bukidnon Crop Info :-)",
+        "Hello! What crops can I help you learn about today?",
+        "Hi! Curious about crops in Bukidnon? Ask away!",
+        "Hi! How can I assist you with crop info today?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "See you later", "Goodbye"],
+      "responses": [
+        "See you later! Hope to help you again soon.",
+        "Take care! Come back if you need more crop info!",
+        "Goodbye! Have a great day!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "That's helpful", "Thanks a lot!"],
+      "responses": [
+        "Happy to help! Let me know if you need more info.",
+        "You're welcome! Feel free to ask about other places.",
+        "My pleasure! Let me know what else you'd like to learn."
+      ]
+    },
+    {
+      "tag": "crop_malaybalay",
+      "patterns": [
+        "Location: Malaybalay"
+      ],
+      "responses": [
+        "In Malaybalay, you can grow peppers, okra, and tomatoes. These crops thrive in temperatures of 25-30C with humidity around 60-80%.",
+        "Malaybalay is great for crops like peppers, okra, and tomatoes. They need temperatures of 25-30C and humidity of 60-80% to grow well."
+      ]
+    },
+    {
+      "tag": "crop_valencia",
+      "patterns": [
+        "Location: Valencia"
+      ],
+      "responses": [
+        "In Valencia, you can grow corn, rice, and vegetables like eggplant. Corn and rice thrive in temperatures of 25-35C with 70-90% humidity.",
+        "Valencia is great for growing crops like corn, rice, and eggplant. These crops need 25-35C and 70-90% humidity to flourish."
+      ]
+    },
+    {
+      "tag": "crop_manolo_fortich",
+      "patterns": [
+        "Location: Manolo Fortich"
+      ],
+      "responses": [
+        "In Manolo Fortich, you can plant bananas, pineapples, and root crops like sweet potatoes. Bananas and pineapples thrive in temperatures of 26-32C with 70-85% humidity.",
+        "Manolo Fortich is ideal for bananas, pineapples, and sweet potatoes. These crops grow well in temperatures of 26-32C and humidity of 70-85%."
+      ]
+    },
+    {
+      "tag": "crop_quezon",
+      "patterns": [
+        "Location: Quezon"
+      ],
+      "responses": [
+        "In Quezon, you can grow cassava, bananas, and vegetables like beans and squash. Cassava prefers 25-30C with humidity of 60-80%.",
+        "Quezon is known for crops like cassava, bananas, beans, and squash. They thrive in temperatures of 25-30C with 60-80% humidity."
+      ]
+    },
+    {
+      "tag": "crop_impasug-ong",
+      "patterns": [
+        "Location: Impasug-ong"
+      ],
+      "responses": [
+        "In Impasug-ong, coffee, ginger, carrots, and potatoes do well. Coffee grows best in 18-24C with 70-80% humidity, while carrots prefer 15-20C.",
+        "Impasug-ong is great for growing coffee, ginger, carrots, and potatoes. Coffee thrives in 18-24C with humidity around 70-80%, and carrots need cooler conditions (15-20C)."
+      ]
+    },
+    {
+      "tag": "crop_maramag",
+      "patterns": [
+        "Location: Maramag"
+      ],
+      "responses": [
+        "Maramag is known for rice, corn, and root crops such as yam and sweet potato. Rice grows best in 25-35C with 80-90% humidity.",
+        "In Maramag, you can grow rice, corn, and root crops like yam and sweet potatoes. Rice needs 25-35C and high humidity (80-90%)."
+      ]
+    },
+    {
+      "tag": "crop_kibawe",
+      "patterns": [
+        "Location: Kibawe"
+      ],
+      "responses": [
+        "In Kibawe, you can grow lettuce, cabbage, and potatoes. Lettuce and cabbage do best in cooler temperatures of 15-20C with humidity of 70-80%.",
+        "Kibawe is good for growing vegetables like lettuce, cabbage, and root crops like potatoes. These crops thrive in 15-20C with humidity around 60-80%."
+      ]
+    },
+    {
+      "tag": "crop_request",
+      "patterns": [
+        "Show me crops for a specific location",
+        "Which crops should I plant in this area?",
+        "Tell me about crops in Bukidnon"
+      ],
+      "responses": [
+        "I can help you with that! Just let me know the place you're interested in.",
+        "Sure! Please provide the location in Bukidnon and I'll tell you what grows best there.",
+        "Feel free to ask about any location in Bukidnon, and I'll share the best crops for that area."
+      ]
+    },
+    {
+      "tag": "where_to_plant_peppers",
+      "patterns": [
+        "Where can I plant peppers?",
+        "What areas are good for planting peppers?",
+        "Where do peppers grow best?"
+      ],
+      "responses": [
+        "Peppers grow well in Malaybalay and Valencia. Both areas have the right temperature and humidity for pepper cultivation."
+      ]
+    },
+    {
+      "tag": "where_to_plant_okra",
+      "patterns": [
+        "Where can I plant okra?",
+        "What areas are good for planting okra?",
+        "Where do okra grow best?"
+      ],
+      "responses": [
+        "Okra is ideal for planting in Malaybalay and Maramag, where the temperatures and humidity are perfect for its growth."
+      ]
+    },
+    {
+      "tag": "where_to_plant_bananas",
+      "patterns": [
+        "Where can I plant bananas?",
+        "What areas are good for planting bananas?",
+        "Where do bananas grow best?"
+      ],
+      "responses": [
+        "Bananas grow best in Manolo Fortich and Quezon. These areas have the perfect combination of temperature and humidity for bananas."
+      ]
+    },
+    {
+      "tag": "where_to_plant_rice",
+      "patterns": [
+        "Where can I plant rice?",
+        "What areas are good for planting rice?",
+        "Where does rice grow best?"
+      ],
+      "responses": [
+        "Rice grows best in Maramag and Valencia, where the conditions of temperature and humidity support rice cultivation."
+      ]
+    },
+    {
+      "tag": "where_to_plant_corn",
+      "patterns": [
+        "Where can I plant corn?",
+        "What areas are good for planting corn?",
+        "Where does corn grow best?"
+      ],
+      "responses": [
+        "Corn grows best in Valencia and Maramag. These locations provide the right temperature and humidity for corn to thrive."
+      ]
+    }
+  ]
+}
