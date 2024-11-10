@@ -5,9 +5,13 @@
          version="4.0">
 
 
+
+
+
+
     <servlet>
         <servlet-name>NavigationServlet</servlet-name>
-        <servlet-class>com.example.NavigationServlet</servlet-class>
+        <servlet-class>com.CMU.NavigationServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -17,7 +21,7 @@
 
     <servlet>
         <servlet-name>SignupServlet</servlet-name>
-        <servlet-class>com.example.SignupServlet</servlet-class>
+        <servlet-class>com.CMU.SignupServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SignupServlet</servlet-name>
@@ -26,7 +30,7 @@
 
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.example.LoginServlet</servlet-class>
+        <servlet-class>com.CMU.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>

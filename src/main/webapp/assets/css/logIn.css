@@ -5,6 +5,29 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.googleContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#authLoginButton {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2em;
+    color: #000000;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+#authLoginButton:hover {
+    color: #ffffff;
+    background-color: #6a974a; /* Slightly darker blue on hover */
+}
+
 html, body {
     overflow: hidden;
     height: 100%;
@@ -252,6 +275,30 @@ main {
 
     nav ul li {
         margin-left: 90px;
+    }
+
+
+    .googleContainer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    #authLoginButton {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        color: #000000;
+        border: 1px solid black;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+
+    #authLoginButton:hover {
+        color: #ffffff;
+        background-color: #6a974a; /* Slightly darker blue on hover */
     }
 
 }

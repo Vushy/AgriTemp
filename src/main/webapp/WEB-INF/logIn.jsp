@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Rayl
-  Date: 10/12/2024
-  Time: 3:50 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +7,8 @@
     <title>AgriTemp</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/logIn.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
 </head>
 
 <body>
@@ -22,7 +17,6 @@
         <div class="logo">
             <h1>AgriTemp</h1>
         </div>
-
         <nav>
             <ul>
                 <div class="search-icon">
@@ -34,7 +28,6 @@
                 <li><a href="#" class="active">Login</a></li>
             </ul>
         </nav>
-
     </div>
 </header>
 
@@ -46,25 +39,27 @@
             <form action="login" method="post">
                 <label for="username">Username or Email</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
-
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
-
-                <div class="forgot-password-container">
-                    <a class="forgotPassword" href="#">Forgot Password?</a>
-                </div>
-
-                <button type="submit" class="logIn-btn">Log In</button>
+                <button class="logIn-btn">Log In</button>
             </form>
+            <div style="display: flex; align-items: center; text-align: center;">
+                <hr style="flex: 1;">
+                <span style="padding: 0 10px;">Or</span>
+                <hr style="flex: 1;">
+            </div>
+            <div class="googleContainer">
+                <button id="authLoginButton" onclick="login()">Log in with Auth0</button>
+            </div>
+            <div class="forgot-password-container">
+                <a class="forgotPassword" href="#">Forgot Password?</a>
+                <button id="authLogoutButton" style="display: block;">Logout</button>
+            </div>
             <div class="signup-container">
-                <p>
-                    <b>Don't Have an account?</b> <a href="navigate?action=signup">Sign Up</a>
-                </p>
+                <p><b>Don't Have an account?</b> <a href="navigate?action=signup">Sign Up</a></p>
             </div>
         </div>
     </div>
-
-
 
     <div class="image-container">
         <img src="${pageContext.request.contextPath}/assets/images/maksym-ivashchenko-LVDTuA_cbTM-unsplash.jpg" alt="Farmer">
@@ -74,6 +69,7 @@
     </div>
 </main>
 
-</body>
+<script type="text/javascript"  src="${pageContext.request.contextPath}/assets/JS/auth.js"></script>
 
+</body>
 </html>
