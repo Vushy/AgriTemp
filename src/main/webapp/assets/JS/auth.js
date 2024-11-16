@@ -8,7 +8,7 @@ const login = async () => {
 
 const logout = () => {
     auth0Client.logout({
-        returnTo: window.location.origin + "/AgriTemp/navigate?action=home"
+        returnTo: window.location.origin + "/AgriTemp/navigate?action=login"
     });
 };
 

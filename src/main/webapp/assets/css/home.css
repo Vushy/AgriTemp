@@ -216,7 +216,7 @@ body {
         background: #f9f9f9;
         height: 450px;
         width: 350px;
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
     }
@@ -311,7 +311,7 @@ body {
         border-top-left-radius: 50px;
         border-top-right-radius: 50px;
         border-bottom-left-radius: 50px;
-        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         cursor: pointer;
     }}
 
@@ -320,3 +320,41 @@ body {
     display: none; /* or use visibility: hidden; to keep the layout */
 }
 
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        transform: translateX(-100%);
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    #showSidebarIcon {
+        display: block;
+        position: fixed;
+        left: 10px;
+        top: 10px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    #map {
+        padding: 100px;
+    }
+
+    #temperatureChart, #windSpeedChart {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .chatbox__support {
+        width: 100%;
+    }
+}

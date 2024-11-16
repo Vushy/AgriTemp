@@ -7,14 +7,12 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-let Stadia_AlidadeSmoothDark = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}', {
-    minZoom: 0,
-    maxZoom: 20,
-    attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    ext: 'png'
+var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
 });
-Stadia_AlidadeSmoothDark.addTo(map);
-
+CartoDB_DarkMatter.addTo(map);
 let heatmapLayer = L.heatLayer([], {
     radius: 30,
     blur: 20,
@@ -104,10 +102,16 @@ async function fetchWeatherData(lat, lon) {
     loadingIndicator.style.display = 'block';
 
     const proxy = 'https://thingproxy.freeboard.io/fetch/';
+    // const proxy = 'https://cors-anywhere.herokuapp.com/';
     const apiURL = `https://barmmdrr.com/connect/gweather_api?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`;
 
     try {
-        const response = await fetch(proxy + apiURL);
+        const response = await fetch(proxy + apiURL, {
+            headers: {
+                'Origin': 'https://your-ngrok-url.ngrok-free.app/AgriTemp',
+                'x-requested-with': 'XMLHttpRequest'
+            }
+        });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -117,8 +121,8 @@ async function fetchWeatherData(lat, lon) {
             return {
                 temperature: data.current.temperature_2m,
                 windSpeed: data.current.wind_speed_10m,
-                hourlyTemperatures: data.hourly.temperature_2m || [], // Ensure it's an array
-                hourlyWindSpeeds: data.hourly.wind_speed_10m || [] // Ensure it's an array
+                hourlyTemperatures: data.hourly.temperature_2m || [],
+                hourlyWindSpeeds: data.hourly.wind_speed_10m || []
             };
         } else {
             console.error("No current weather data available for this location");
@@ -131,6 +135,7 @@ async function fetchWeatherData(lat, lon) {
         loadingIndicator.style.display = 'none';
     }
 }
+
 
 function normalizeTemperature(temp) {
     const minTemp = -30;
