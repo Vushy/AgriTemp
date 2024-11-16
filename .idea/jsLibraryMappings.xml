@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{auth0-spa-js.production, chart.js, font-awesome, leaflet, leaflet-fullscreen, leaflet.heat}" />
+    <file url="file://$PROJECT_DIR$" libraries="{20241116201421-RSMXE8M1, auth0-spa-js.production, chart.js, font-awesome, inject, leaflet, leaflet-fullscreen, leaflet.heat}" />
   </component>
 </project>
