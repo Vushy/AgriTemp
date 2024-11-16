@@ -1,0 +1,139 @@
+
+    /* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light gray background for body */
+}
+
+/* Dashboard container */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background-color: #6A974A; /* Use the given green color */
+    color: #fff;
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* To push content to top and profile to bottom */
+}
+
+.sidebar .logo h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.sidebar .nav ul {
+    list-style: none;
+}
+
+.sidebar .nav ul li {
+    margin: 15px 0;
+}
+
+.sidebar .nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar .nav ul li a:hover {
+    background-color: #4caf50; /* Light green hover effect */
+}
+
+/* Admin Profile at the bottom */
+.sidebar .profile {
+    text-align: center;
+}
+
+.sidebar .profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff; /* White border around the avatar */
+}
+
+.sidebar .profile p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #fff;
+}
+
+/* Main content styles */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #fff; /* White background for main content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+/* Header styles */
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #333; /* Dark text color for header */
+}
+
+/* Widget styles */
+.widgets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.widget {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #6A974A; /* Green accent on the left side using #6A974A */
+}
+
+.widget h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.widget p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #6A974A; /* Use the green color for widget numbers */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .widgets {
+        grid-template-columns: 1fr;
+    }
+}

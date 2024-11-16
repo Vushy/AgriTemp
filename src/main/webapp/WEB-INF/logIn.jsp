@@ -53,7 +53,7 @@
             </div>
             <div class="forgot-password-container">
                 <a class="forgotPassword" href="#">Forgot Password?</a>
-                <button id="authLogoutButton" style="display: block;">Logout</button>
+<%--                <button id="authLogoutButton" style="display: block;">Logout</button>--%>
             </div>
             <div class="signup-container">
                 <p><b>Don't Have an account?</b> <a href="navigate?action=signup">Sign Up</a></p>

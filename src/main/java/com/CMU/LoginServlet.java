@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -34,15 +35,23 @@ public class LoginServlet extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Login</title>");
-            out.println("<link rel='stylesheet' href='assets/css/success.css'>"); // External CSS file for styling
+            out.println("<link rel='stylesheet' href='assets/css/success.css'>");
             out.println("</head>");
             out.println("<body>");
             out.println("<div class='login-container'>");
 
             if (resultSet.next()) {
+                // Start a session and set attributes
+                HttpSession session = request.getSession();
+                session.setAttribute("loggedIn", true);
+                session.setAttribute("username", username);
+
                 out.println("<h1 class='success-message'>Login successful!</h1>");
                 out.println("<p>Welcome, " + resultSet.getString("first_name") + " " + resultSet.getString("last_name") + "!</p>");
                 out.println("<a href='index.html' class='dashboard-link'>Go to Dashboard</a>");
+                out.println("<form action='logout' method='POST'>");
+                out.println("<button type='submit' class='logout-button'>Logout</button>");
+                out.println("</form>");
             } else {
                 out.println("<h1 class='error-message'>Invalid username or password. Try again.</h1>");
                 out.println("<a href='login.html' class='retry-link'>Back to Login</a>");

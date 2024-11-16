@@ -6,7 +6,23 @@
 
 
 
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.CMU.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>CheckSessionServlet</servlet-name>
+        <servlet-class>com.CMU.CheckSessionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckSessionServlet</servlet-name>
+        <url-pattern>/checkSession</url-pattern>
+    </servlet-mapping>
 
 
     <servlet>
