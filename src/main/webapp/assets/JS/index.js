@@ -223,6 +223,122 @@ function sendMessageToApp() {
 
 addHeatmapForMarkers();
 
+document.getElementById('getLocation').addEventListener('click', async (event) => {
+    event.preventDefault(); // Prevent default behavior of the link
+
+    if (navigator.geolocation) {
+        // Ask for the user's location
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            console.log(`User's location: Latitude ${lat}, Longitude ${lon}`);
+
+            // Call the API to fetch weather data
+            const weatherData = await fetchWeatherData(lat, lon);
+
+            if (weatherData) {
+                // Display the fetched weather data on the map and in the UI
+                document.getElementById('loc_Name').innerText = "Your Location";
+                document.getElementById('Temps').innerText =
+                    `Current Temperature: ${weatherData.temperature}°C`;
+
+                // Update the charts
+                createTemperatureChart(weatherData.hourlyTemperatures);
+                createWindSpeedChart(weatherData.hourlyWindSpeeds);
+
+                // Center the map on the user's location
+                map.setView([lat, lon], 11.5);
+
+                // Optionally, add a marker to the user's location
+                const userMarker = L.marker([lat, lon], { icon: markerIcon }).addTo(map);
+                userMarker.bindPopup("You are here").openPopup();
+            } else {
+                alert("Unable to fetch weather data for your location.");
+            }
+        }, (error) => {
+            console.error("Error getting user's location:", error);
+            alert("Could not access your location. Please enable location services.");
+        });
+    } else {
+        alert("Geolocation is not supported by your browser.");
+    }
+});
+
+function showNotification(temperature) {
+    const notification = document.getElementById('notification');
+
+    // Determine whether it's hot or cold
+    if (temperature > 30) {
+        notification.classList.add('hot');
+        notification.classList.remove('cold');
+        notification.innerText = `It's hot! Current Temperature: ${temperature}°C`;
+    } else if (temperature < 15) {
+        notification.classList.add('cold');
+        notification.classList.remove('hot');
+        notification.innerText = `It's cold! Current Temperature: ${temperature}°C`;
+    } else {
+        notification.classList.remove('hot', 'cold');
+        notification.innerText = `Temperature is moderate: ${temperature}°C`;
+    }
+
+    // Show the notification
+    notification.style.display = 'block';
+
+    // Hide it after 3 seconds
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 3000);
+}
+
+document.getElementById('getLocation').addEventListener('click', async (event) => {
+    event.preventDefault(); // Prevent default behavior of the link
+
+    if (navigator.geolocation) {
+        // Ask for the user's location
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            console.log(`User's location: Latitude ${lat}, Longitude ${lon}`);
+
+            // Call the API to fetch weather data
+            const weatherData = await fetchWeatherData(lat, lon);
+
+            if (weatherData) {
+                // Display the fetched weather data on the map and in the UI
+                document.getElementById('loc_Name').innerText = "Your Location";
+                document.getElementById('Temps').innerText =
+                    `Current Temperature: ${weatherData.temperature}°C`;
+
+                // Show the temperature notification
+                showNotification(weatherData.temperature);
+
+                // Update the charts
+                createTemperatureChart(weatherData.hourlyTemperatures);
+                createWindSpeedChart(weatherData.hourlyWindSpeeds);
+
+                // Center the map on the user's location
+                map.setView([lat, lon], 11.5);
+
+                // Optionally, add a marker to the user's location
+                const userMarker = L.marker([lat, lon], { icon: markerIcon }).addTo(map);
+                userMarker.bindPopup("You are here").openPopup();
+            } else {
+                alert("Unable to fetch weather data for your location.");
+            }
+        }, (error) => {
+            console.error("Error getting user's location:", error);
+            alert("Could not access your location. Please enable location services.");
+        });
+    } else {
+        alert("Geolocation is not supported by your browser.");
+    }
+});
+
+
+
+
 // Toggle sidebar visibility on icon click
 const sidebar = document.getElementById('sidebar');
 const sidebarToggleIcon = document.getElementById('showSidebarIcon');

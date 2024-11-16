@@ -320,6 +320,28 @@ body {
     display: none; /* or use visibility: hidden; to keep the layout */
 }
 
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    display: none; /* Initially hidden */
+    z-index: 1000;
+}
+.notification.hot {
+    background-color: red; /* For hot weather */
+}
+.notification.cold {
+    background-color: blue; /* For cold weather */
+}
+
+
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .sidebar {
