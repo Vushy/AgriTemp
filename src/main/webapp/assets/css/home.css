@@ -25,7 +25,6 @@ body {
     z-index: 10;
     transform: translateX(-100%); /* Start off-screen */
 }
-
 .sidebar.show {
     opacity: 1; /* Make it visible */
     pointer-events: auto; /* Enable interaction */
@@ -103,7 +102,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     flex: 1;
     margin: 30px;
-    width: 500px;
+    height: 300px;
+    width: 800px;
 }
 
 #windSpeedChart {
@@ -112,7 +112,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     flex: 2;
     margin: 30px;
-    width: 500px;
+    height: 300px;
+    width: 800px;
 }
 
 .agriTemp {
@@ -124,6 +125,7 @@ body {
 
 #charts {
     display: flex;
+    flex-direction: row;
     flex: 2;
 }
 
@@ -342,22 +344,6 @@ body {
 
 
 
-/* Tablet styles */
-@media screen and (min-width: 768px) {
-    .sidebar {
-        position: static;
-        transform: none;
-    }
-
-    .main {
-        margin-left: 250px; /* Adjust this value as needed */
-    }
-
-    #showSidebarIcon {
-        display: none;
-    }
-}
-
 /* Desktop styles */
 @media screen and (min-width: 1024px) {
     .sidebar {
@@ -373,7 +359,8 @@ body {
     }
 
     #temperatureChart, #windSpeedChart {
-        width: 80%;
+        width: 100%;
+        height: 500px;
         max-width: 800px;
     }
 }
@@ -417,8 +404,37 @@ body {
 }
 
 /* Mobile-specific styles */
-@media screen and (max-width: 767px) {
-    .chatbox__support {
-        display: none;
+@media screen and (max-width: 768px) and (min-width: 300px) {
+    .main {
+        gap: 10px; /* Smaller gaps for very small screens */
+        padding: 5px; /* Less padding */
+        display: flex;
+        flex-direction: column;
+    }
+    #charts{
+        flex-direction: row;
+    }
+    .main > #map {
+        height: 50%; /* Slightly smaller map */
+        padding: 8px; /* Reduce padding */
+    }
+
+    .chart-container {
+        padding: 10px; /* Reduce padding on smaller screens */
+        max-width: 300px; /* Adjust width */
+    }
+
+    #temperature-chart-container{
+        height: 400px;
+        width: 100%;
+        padding: 10px;
+    }
+    #wind-speed-chart-container{
+        height: 400px;
+        width: 100%;
+        padding: 10px;
+    }
+    .chatbox{
+        display: none !important;
     }
 }

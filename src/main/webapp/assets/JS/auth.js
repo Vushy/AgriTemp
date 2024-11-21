@@ -6,29 +6,11 @@ const login = async () => {
     });
 };
 
-const logout = async () => {
-    try {
-        // Log out of Auth0 if logged in
-        const user = await auth0Client.getUser();
-        if (user) {
-            await auth0Client.logout({
-                returnTo: window.location.origin + "/AgriTemp/navigate?action=login"
-            });
-        }
-
-        // Log out of MySQL session
-        await fetch('/logout', { method: 'POST', credentials: 'include' });
-
-        // Redirect to login page or refresh UI
-        window.location.href = '/AgriTemp/navigate?action=login';
-    } catch (error) {
-        console.error("Error during logout:", error);
-    }
+const logout = () => {
+    auth0Client.logout({
+        returnTo: window.location.origin + "/AgriTemp/navigate?action=home"
+    });
 };
-
-// Attach the logout function to the logout button
-document.getElementById('authLogoutButton').addEventListener('click', logout);
-
 
 const handleRedirectCallback = async () => {
     const result = await auth0Client.handleRedirectCallback();
@@ -38,33 +20,21 @@ const handleRedirectCallback = async () => {
 
 
 const updateUI = async () => {
-    try {
-        // Check if the user is logged in with Auth0
-        const user = await auth0Client.getUser();
-        const logoutButton = document.getElementById('authLogoutButton');
+    const user = await auth0Client.getUser();
+    const logoutButton = document.getElementById('authLogoutButton');
 
-        // Check MySQL session status
-        const response = await fetch('/checkSession', { method: 'GET', credentials: 'include' });
-        const mysqlSession = await response.json();
-
-        const isLoggedInMySQL = mysqlSession.loggedIn; // Assume backend responds with { loggedIn: true/false }
-
-        if (logoutButton) {
-            if (user || isLoggedInMySQL) {
-                // User is logged in via Auth0 or MySQL: show logout button
-                logoutButton.style.display = 'block';
-            } else {
-                // User is not logged in: hide logout button
-                logoutButton.style.display = 'none';
-            }
+    if (logoutButton) {
+        if (user) {
+            // User is logged in: show logout button
+            logoutButton.style.display = 'block';
         } else {
-            console.error("Logout button not found!");
+            // User is not logged in: hide logout button
+            logoutButton.style.display = 'none';
         }
-    } catch (error) {
-        console.error("Error updating UI:", error);
+    } else {
+        console.error("Logout button not found!");
     }
 };
-
 
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -86,4 +56,3 @@ window.addEventListener('DOMContentLoaded', async () => {
         logoutButton.addEventListener('click', logout);
     }
 });
-
