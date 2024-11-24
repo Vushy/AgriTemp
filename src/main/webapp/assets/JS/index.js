@@ -101,20 +101,19 @@ function createWindSpeedChart(hourlyWindSpeeds) {
 async function fetchWeatherData(lat, lon) {
     loadingIndicator.style.display = 'block';
 
-    const proxy = 'https://thingproxy.freeboard.io/fetch/';
-    // const proxy = 'https://cors-anywhere.herokuapp.com/';
-    const apiURL = `https://barmmdrr.com/connect/gweather_api?latitude=${lat}&longitude=${lon}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`;
+    const servletURL = `/AgriTemp/fetchWeather?latitude=${lat}&longitude=${lon}`;
+
 
     try {
-        const response = await fetch(proxy + apiURL, {
+        const response = await fetch(servletURL, {
             headers: {
-                'Origin': 'https://your-ngrok-url.ngrok-free.app/AgriTemp',
                 'x-requested-with': 'XMLHttpRequest'
             }
         });
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
+
         const data = await response.json();
 
         if (data && data.current && data.current.temperature_2m) {
@@ -125,7 +124,7 @@ async function fetchWeatherData(lat, lon) {
                 hourlyWindSpeeds: data.hourly.wind_speed_10m || []
             };
         } else {
-            console.error("No current weather data available for this location");
+            console.error("No current weather data available for this location.");
             return null;
         }
     } catch (error) {

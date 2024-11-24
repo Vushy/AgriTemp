@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - AgriTemp</title>
+  <!-- Link to Font Awesome for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f9f9f9;
+    }
+
+    h1, h2, h3, p {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8); /* White with some transparency */
+      padding: 15px 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #006400; /* Dark green color for the logo */
+    }
+
+    .navbar .links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .links li {
+      display: inline;
+    }
+
+    .navbar .links a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      padding: 5px 10px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar .links a:hover {
+      color: #006400; /* Dark green on hover */
+    }
+
+    /* Add space to the body content to avoid overlap with navbar */
+    body {
+      padding-top: 80px; /* Adjust this value based on navbar height */
+    }
+
+    /* Section 1: About the Temperature and Humidity Forecasting */
+    .about-section {
+      padding: 50px 20px;
+      background: #e0ffe0;
+      text-align: center;
+    }
+
+    .about-section h2 {
+      font-size: 30px;
+      color: #006400;
+      margin-bottom: 20px; /* Added margin to create space below the title */
+    }
+
+    .about-section p {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 20px; /* Added margin to create space below the paragraph */
+    }
+
+    .about-section img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover; /* Crops the image to fit the space */
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    /* Section 2: Cards Section (Web, Mobile, and Desktop) */
+    .cards-section {
+      padding: 50px 20px;
+      text-align: center;
+      background: #f9f9f9;
+    }
+
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 250px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .card p {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Section 3: Photo of a Person with Description */
+    .person-section {
+      display: flex;
+      align-items: center;
+      padding: 50px 20px;
+      background: #e0f7fa;
+    }
+
+    .person-section .image {
+      width: 50%; /* Adjusted to cover left side */
+      text-align: center;
+      border: 2px solid #ddd; /* Added border */
+      padding: 10px;
+    }
+
+    .person-section .image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Make sure the image covers the section */
+      border-radius: 8px;
+    }
+
+    .person-section .description {
+      width: 50%; /* Right side description */
+      padding-left: 20px;
+    }
+
+    /* Add margin below the title in the third section */
+.person-section .description h2 {
+  margin-bottom: 20px;
+}
+
+
+    /* Justify the paragraph in the third section */
+.person-section .description p {
+  text-align: justify;
+}
+
+
+    /* Section 4: Team Members */
+    .team-section {
+      padding: 50px 20px;
+      background: #f4f4f4;
+    }
+
+    .team-section h2 {
+      text-align: center;
+      font-size: 30px;
+      color: #006400;
+      margin-bottom: 30px;
+    }
+
+    .team-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .team-member {
+      width: 120px;
+    }
+
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .team-member p {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .team-member p.bold {
+      font-weight: bold;
+    }
+
+    /* Footer Section */
+    .footer {
+      background-color: #333; /* Lighter black/gray */
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer h1 {
+      margin: 0;
+      font-size: 36px;
+      color: #fff;
+    }
+
+    .footer p {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #ddd;
+    }
+
+    .footer .social-icons {
+      margin-top: 20px;
+    }
+
+    .footer .social-icons a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: white;
+      font-size: 24px;
+    }
+
+    .footer .social-icons a:hover {
+      color: #4CAF50;
+    }
+
+    .footer .copyright {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    /* Keep the name size the same as before */
+/* Ensure name stays on the first line */
+.team-member .bold {
+  font-size: 0.8em; /* Keep the name size as it was */
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Ensure no overflow */
+}
+
+
+/* Adjusting size of roles (make smaller) */
+.team-member .role {
+  font-size: 0.6em; /* Make the role/position smaller */
+  text-align: center;
+  color: #777; /* Slightly lighter color for role */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">AgriTemp</div>
+    <ul class="links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="map.html">Map</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="navigate?action=login">Login</a></li>
+    </ul>
+  </nav>
+
+  <!-- Section 1: About the Temperature and Humidity Forecasting -->
+  <section class="about-section">
+    <img src="assets/images/about_1st.jpg" alt="">
+    <h2>About the Temperature and Humidity Forecasting</h2>
+    <p>The agriculture industry faces many challenges, especially when it comes to predicting weather conditions. Unpredictable temperature and humidity can severely impact crop growth, leading to lower yields and wasted resources. Accurate weather forecasting is crucial for farmers to plan their activities properly and minimize risks.</p>
+    <p>Our system, AgriTemp, provides real-time weather updates for temperature and humidity that are accessible through web, mobile and desktop platforms. This helps farmers make informed decisions and take necessary actions to protect their crops, improving their productivity and sustainability.</p>
+  </section>
+
+  <!-- Section 2: Cards for Web, Mobile, and Desktop -->
+  <section class="cards-section">
+    <h2 style="margin-bottom: 25px;">Our Platform on All Devices</h2>
+    <div class="cards-container">
+      <div class="card">
+        <img src="assets/images/about_web.jpg" alt="Web">
+        <p>Web Platform</p>
+      </div>
+      <div class="card">
+        <img src="assets/images/about_mobile.jpg" alt="Mobile">
+        <p>Mobile Platform</p>
+      </div>
+      <div class="card">
+        <img src="assets/images/about_desktop.png" alt="Desktop">
+        <p>Desktop Platform</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Photo of a Person with Description -->
+  <section class="person-section">
+    <div class="image">
+      <img src="assets/images/sir_eric.jpg" alt="Person">
+    </div>
+    <div class="description">
+      <h2>Eric P. Lozarita</h2>
+      <p>Eric P. Lozarita is a leading technology executive, consultant, educator, and author with over 24 years of experience in IT systems development, network architecture, and distributed systems. As CEO of Greppoo Technology Solutions, he has been instrumental in driving strategic growth, enhancing operational efficiency, and implementing innovative software solutions. Eric's technical contributions have gained international recognition, particularly from Sun Microsystems, for his expertise in Java-based systems and software architecture.</p>
+    </div>
+  </section>
+
+<!-- Section 4: Team Members -->
+<section class="team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team-container">
+      <div class="team-member">
+        <img src="assets/images/rizza.jpg" alt="Rizza">
+        <p class="bold">Rizza Mae Dagoc</p>
+        <p class="role">Project Manager & UI/UX Designer</p>
+      </div>
+      <div class="team-member">
+        <img src="assets/images/ryell.jpg" alt="Ryell">
+        <p class="bold">Ryell Andrade</p>
+        <p class="role">Lead Developer</p>
+      </div>
+      <div class="team-member">
+        <img src="assets/images/cyrille.png" alt="Cyrille">
+        <p class="bold">Cyrille Anayron</p>
+        <p class="role">Technical Documentation Contributor</p>
+      </div>
+      <div class="team-member">
+        <img src="assets/images/steven.png" alt="Steven">
+        <p class="bold">Steven Buhian</p>
+        <p class="role">Assistant Developer</p>
+      </div>
+      <div class="team-member">
+        <img src="assets/images/allen.png" alt="Allen">
+        <p class="bold">Allen Em Responso</p>
+        <p class="role">Technical Documentation Contributor</p>
+      </div>
+      <div class="team-member">
+        <img src="assets/images/albert.png" alt="Albert">
+        <p class="bold">John Albert Urbano</p>
+        <p class="role">Assistant Developer</p>
+      </div>
+      <div class="team-member">
+        <img src="assets/images/gen.png" alt="Gen">
+        <p class="bold">Gen Evangelista</p>
+        <p class="role">Technical Documentation Contributor</p>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <h1>AgriTemp</h1>
+    <p>Your trusted agricultural weather forecasting system</p>
+    <div class="social-icons">
+      <a href="#" class="fab fa-facebook"></a>
+      <a href="#" class="fab fa-twitter"></a>
+      <a href="#" class="fab fa-linkedin"></a>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024 AgriTemp. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

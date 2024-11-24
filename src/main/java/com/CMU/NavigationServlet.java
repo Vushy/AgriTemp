@@ -20,6 +20,8 @@ public class NavigationServlet extends HttpServlet {
             request.getRequestDispatcher("WEB-INF/signUp.jsp").forward(request, response);
         } else if (action.equals("home")) {
             request.getRequestDispatcher("index.html").forward(request, response);
+        }else if (action.equals("map")) {
+            request.getRequestDispatcher("map.html").forward(request, response);
         }
         else {
             // Handle unknown actions

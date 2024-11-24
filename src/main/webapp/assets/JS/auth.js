@@ -2,7 +2,7 @@ let auth0Client;
 
 const login = async () => {
     await auth0Client.loginWithRedirect({
-        redirect_uri: window.location.origin + "/AgriTemp/navigate?action=home"
+        redirect_uri: window.location.origin + "/AgriTemp/navigate?action=map"
     });
 };
 
@@ -35,6 +35,7 @@ const updateUI = async () => {
         console.error("Logout button not found!");
     }
 };
+
 
 
 window.addEventListener('DOMContentLoaded', async () => {

@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 
                 out.println("<h1 class='success-message'>Login successful!</h1>");
                 out.println("<p>Welcome, " + resultSet.getString("first_name") + " " + resultSet.getString("last_name") + "!</p>");
-                out.println("<a href='index.html' class='dashboard-link'>Go to Dashboard</a>");
+                out.println("<a href='map.html' class='dashboard-link'>Go to Dashboard</a>");
                 out.println("<form action='logout' method='POST'>");
                 out.println("<button type='submit' class='logout-button'>Logout</button>");
                 out.println("</form>");

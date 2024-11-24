@@ -19,6 +19,6 @@ public class LogoutServlet extends HttpServlet {
         }
 
 
-        response.sendRedirect("index.html");
+        response.sendRedirect("map.html");
     }
 }

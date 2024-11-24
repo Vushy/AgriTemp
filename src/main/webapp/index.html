@@ -1,92 +1,299 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AgriTemp</title>
+  <!-- Link to Font Awesome for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <!-- Leaflet CSS and JS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.5/dist/chart.umd.min.js"></script>
+    h1, h2, h3, p {
+      margin: 0;
+      padding: 0;
+    }
 
-  <!-- External CSS and icons -->
-  <link rel="stylesheet" href="assets/css/home.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.8); /* White with some transparency */
+      padding: 15px 30px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
 
+    .navbar .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #006400; /* Dark green color for the logo */
+    }
+
+    .navbar .links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .links li {
+      display: inline;
+    }
+
+    .navbar .links a {
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      padding: 5px 10px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar .links a:hover {
+      color: #006400; /* Dark green on hover */
+    }
+
+    /* Add space to the body content to avoid overlap with navbar */
+    body {
+      padding-top: 80px; /* Adjust this value based on navbar height */
+    }
+
+    /* Section 1: Welcome Section */
+    .welcome-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 50px;
+      background: #e0ffe0; /* Light green background */
+    }
+    .welcome-section .text-content {
+      width: 50%;
+    }
+    .welcome-section h1 {
+      font-size: 36px;
+      color: #006400; /* Dark green */
+    }
+    .welcome-section p {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #333;
+    }
+    .welcome-section .button {
+      margin-top: 30px; /* Adjusted margin */
+    }
+    .welcome-section .button a {
+      text-decoration: none;
+      color: white;
+      background: #006400;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    .welcome-section .image-content {
+      width: 40%;
+      text-align: right;
+    }
+    .welcome-section .image-content img {
+      width: 100%;
+      max-width: 350px;
+      box-shadow: black 1px 1px;
+      border-radius: 2px;
+    }
+
+    /* Section 2: Cards Section */
+    .cards-section {
+      padding: 50px 20px;
+      text-align: center;
+      background: #f9f9f9;
+    }
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 250px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+    }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .card p {
+      margin-top: 20px; /* Adjusted margin */
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Section 3: Description Section (Just Images) */
+    .description-section {
+      display: flex;
+      padding: 50px 20px;
+      background: #e0f7fa;
+    }
+    .description-section img {
+      width: 50%;
+      height: 100%;
+      max-height: 500px;
+      object-fit: cover; /* Ensures the image covers the area */
+      border-radius: 0; /* Removes rounded corners to make them edge to edge */
+    }
+
+    /* Section 4: Split Section */
+    .split-section {
+      display: flex;
+      align-items: center;
+      padding: 50px;
+      background: #f4f4f4;
+    }
+    .split-section .image {
+      width: 50%;
+    }
+    .split-section .image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .split-section .text {
+      width: 50%;
+      padding-left: 20px;
+    }
+    .split-section p {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Footer Section */
+    .footer {
+      background-color: #333; /* Lighter black/gray */
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .footer h1 {
+      margin: 0;
+      font-size: 36px;
+      color: #fff;
+    }
+    .footer p {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #ddd;
+    }
+    .footer .social-icons {
+      margin-top: 20px;
+    }
+    .footer .social-icons a {
+      text-decoration: none;
+      margin: 0 10px;
+      color: white;
+      font-size: 24px;
+    }
+    .footer .social-icons a:hover {
+      color: #4CAF50;
+    }
+    .footer .copyright {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">AgriTemp</div>
+    <ul class="links">
+      <li><a href="#">Home</a></li>
+      <li><a href="map.html">Map</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="navigate?action=login">Login</a></li>
+    </ul>
+  </nav>
 
-<i id="showSidebarIcon" class="fas fa-bars"></i> <!-- Icon to show sidebar -->
-
-<!-- Sidebar layout -->
-<div class="sidebar" id="sidebar">
-  <h2>AgriTemp</h2>
-  <a href="navigate?action=home" class="active"><i class="fa-solid fa-house"></i> </a>
-  <a href="#" id="getLocation"><i class="fa-solid fa-location-dot"></i></a>
-  <a href="navigate?action=login"><i class="fa-solid fa-user"></i> </a>
-  <a id="authLogoutButton" style="display: none;"><i class="fa-solid fa-power-off"></i></a>
-</div>
-
-
-<div id="notification" class="notification"></div>
-
-
-<div class="main">
-  <h1 class="agriTemp">AgriTemp</h1>
-  <div id="loading">Loading weather data...</div> <!-- Loading Indicator -->
-  <div id="map"></div> <!-- Map Container -->
-  <div id="textContainer">
-    <h1 id="loc_Name"></h1>
-    <p id="Temps"></p>
-  </div>
-  <div id="charts">
-
-
-    <div id="temperature-chart-container">
-      <canvas id="temperatureChart" ></canvas>
-    </div>
-    <div id="wind-speed-chart-container">
-      <canvas id="windSpeedChart" ></canvas>
-    </div>
-    <div>
-      <!-- Chatbot Container -->
-      <div class="ChatBoxcontainer">
-        <div class="chatbox">
-          <div class="chatbox__support">
-            <div class="chatbox__header">
-              <div class="chatbox__image--header">
-                <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
-              </div>
-              <div class="chatbox__content--header">
-                <h4 class="chatbox__heading--header">Agri support</h4>
-                <p class="chatbox__description--header">Hi. My name is Paulita. How can I help you?</p>
-              </div>
-            </div>
-            <div class="chatbox__messages">
-              <div></div>
-            </div>
-            <div class="chatbox__footer">
-              <input id="chatbox-input" type="text" placeholder="Write a message...">
-              <button class="chatbox__send--footer send__button">Send</button>
-            </div>
-
-          </div>
-        </div>
+  <!-- Section 1: Welcome Section -->
+  <section class="welcome-section">
+    <div class="text-content">
+      <h1>Welcome to AgriTemp</h1>
+      <p>We aim to provide you with the best tools and resources for a better tomorrow. Join us in creating sustainable solutions for all.</p>
+      <div class="button">
+        <a href="#">Go To Maps</a>
       </div>
     </div>
-  </div>
-</div>
+    <div class="image-content">
+      <img src="assets/images/home_1stsec.jpg" alt="Farmer">
+    </div>
+  </section>
 
-<script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2024/11/16/20/20241116201421-RSMXE8M1.js"></script>
+  <!-- Section 2: Cards Section -->
+  <section class="cards-section">
+    <h2>Our Features</h2>
+    <div class="cards-container">
+      <div class="card">
+        <img src="assets/images/home_2ndec_B.jpg" alt="Feature 1">
+        <p>Feature 1: Detailed agricultural insights at your fingertips.</p>
+      </div>
+      <div class="card">
+        <img src="assets/images/home_2ndsec_A.jpg" alt="Feature 2">
+        <p>Feature 2: Accurate and reliable data with maps and its pinned location.</p>
+      </div>
+      <div class="card">
+        <img src="assets/images/home_2ndsec_B.jpg" alt="Feature 3">
+        <p>Feature 3: Know the current temperature in any place in Bukidnon.</p>
+      </div>
+      <div class="card">
+        <img src="assets/images/home_2ndsec_C.jpg" alt="Feature 4">
+        <p>Feature 4: Get Real-time updates of Humidity.</p>
+      </div>
+    </div>
+  </section>
 
-<script src="assets/standalone-frontend/app.js"></script>
-<script src="https://cdn.auth0.com/js/auth0-spa-js/1.19/auth0-spa-js.production.js"></script>
-<script src="assets/JS/auth.js"></script>
-<script type="text/javascript" src="assets/JS/index.js"></script>
+  <!-- Section 3: Description Section (Just Images) -->
+  <section class="description-section">
+    <img src="assets/images/home_3rdsec_A.jpg" alt="Temperature">
+    <img src="assets/images/home_3rdsec_B.jpg" alt="Humidity">
+  </section>
 
+  <!-- Section 4: Split Section -->
+  <section class="split-section">
+    <div class="image">
+      <img src="assets/images/home_4th.jpg" alt="Farm Image">
+    </div>
+    <div class="text">
+      <h2>Our Mission</h2>
+      <p>We provide farmers with the necessary tools, data, and support to make informed decisions about their crops and land management.</p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <h1>AgriTemp</h1>
+    <p>Empowering agriculture with technology and data.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024 AgriTemp. All Rights Reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>

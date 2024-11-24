@@ -16,26 +16,6 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/signUp.css">
 </head>
 <body>
-<header>
-    <div class="navbar">
-        <div class="logo">
-            <h1>AgriTemp</h1>
-        </div>
-
-        <nav>
-            <ul>
-                <div class="search-icon">
-                    <img src="${pageContext.request.contextPath}/assets/images/icons/search.png" alt="Search">
-                </div>
-                <li><a href="navigate?action=home">Home</a></li>
-                <li><a href="#">Auto Locate</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="navigate?action=login">Login</a></li>
-            </ul>
-        </nav>
-
-    </div>
-</header>
 
 <main>
     <div class="signup-container">

@@ -214,23 +214,19 @@ main {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 768px) and (min-width: 300px) {
     main {
         flex-direction: column;
     }
 
-    .login-container, .image-container {
+    .login-container {
         width: 100%;
     }
 
     .image-container {
-        height: auto;
+        display: none;
     }
 
-    .image-container img {
-        height: 100%;
-        transform: scaleX(-1);
-    }
 
     .login-form {
         max-width: none;
